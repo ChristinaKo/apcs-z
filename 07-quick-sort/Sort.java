@@ -34,14 +34,18 @@ public class Sort{
 		rhi[i] = hir[i].intValue();
 	    }
 	    rhi = qsort(rhi);
-	    for (int x = 0; x < rlow.length; x ++){
-		a[x] = rlow[x];
+	    for (int x = 0; x < a.length; x ++){
+		if (x < rlow.length){
+		    a[x] = rlow[x];
+		}
+		else if (x == rlow.length){
+		    a[x] = piv;
+		}
+		else{
+		    a[x] = rhi[x - (rlow.length + 1)];
+		}
 	    }
-	    a[rlow.length]= piv;
-	    for(int z = rlow.length + 1; z<rhi.length;z++){
-		a[z]=rhi[z];
-	    }
-	    return a;
+		return a;
 	}
     }
     public static void main(String[] args){
