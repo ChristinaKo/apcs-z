@@ -12,10 +12,18 @@ public class MyLinkedList{
 	tmp.setNext(head);
 	head = tmp;
     }
-    // public void add(int i, String s){
-    // 	int count = 0;
-    // 	for (int 
-    // 		 }
+     public void add(int i, String s){
+     	int count = 0;
+	Node tmp = new Node(s);
+    	for (Node n = head; n != null; n = n.getNext()){
+	    if (count ==i){
+		tmp.setNext(n.getNext());
+		n.setNext(tmp);
+		
+    		 }
+	    count =count +1;
+	}
+     }
     public String get(int i){
 	int count = 0;
 	for (Node n = head; n != null; n = n.getNext()){
@@ -40,10 +48,31 @@ public class MyLinkedList{
 	}
 	return tmp.getData();
     }
-	    // public String remove(int i){
-	    // }
-	    // public String find(String s){
-	    // }
+    public String remove(int i){
+	Node tmp1= new Node();
+	Node tmp2 = new Node();
+	int count = 0;
+	for(Node j = head ;j!= null; j = j.getNext()){
+	    if (count == i-1){
+		tmp1 = j;
+		tmp2 = j.getNext();
+		tmp1.setNext(tmp1.getNext().getNext());
+	    }
+	    count = count +1;
+	}
+	return tmp2.getData();
+    }
+
+    public int find(String s){
+	int ind = 0;
+	for(Node n= head; n!= null; n=n.getNext()){
+	    if(n.getData().equals(s)){
+		return ind;
+	    }
+	    ind = ind + 1;
+	}
+	return -1;
+    }
     public int length(){
 	int len = 0;
 	for (Node n = head; n!= null; n=n.getNext()){
