@@ -1,6 +1,7 @@
 public class Node{
     private String data;
     private Node next;
+    private Node before;
     public Node(String d){
 	data = d;
 	next = null;
@@ -8,6 +9,12 @@ public class Node{
     public Node(){
 	data = null;
 	next = null;
+    }
+    public void setBefore(Node n){
+	before = n;
+    }
+    public Node getBefore(){
+	return before;
     }
     public void setData(String d){
 	data = d;

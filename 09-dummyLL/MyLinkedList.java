@@ -3,29 +3,40 @@ import java.io.*;
 
 public class MyLinkedList{
     private Node head;
+    private int Len;
+    private Node tail;
+    
     public MyLinkedList(){
 	head = new Node("dum");
+	tail = new Node("mud");
     }
     public void add(String d){
+	// Node tmp = new Node(d);
+	// //head=tmp;
+	// tmp.setNext(head.getNext());
+	// head.setNext(tmp);
 	Node tmp = new Node(d);
-	//head=tmp;
-	tmp.setNext(head.getNext());
-	head.setNext(tmp);
+	tmp.setBefore(tail.getBefore());
+	tail.setBefore(tmp);
+
     }
+
     public void add(int i, String s){
-	int count = 0;
-	Node tmp = new Node(s);
-	for (Node n = head; n != null; n = n.getNext()){
-	    if (count ==i){
-		tmp.setNext(n.getNext());
-		n.setNext(tmp);
+    	int count = 0;
+    	Node tmp = new Node(s);
+    	for (Node n = head; n != null; n = n.getNext()){
+    	    if (count == i){
+    		tmp.setNext(n.getNext());
+    		n.setNext(tmp);
 		
-	    }
-	    count =count +1;
-	}
+    	    }
+    	    count = count + 1;
+    	}
     }
+
+
     public String get(int i){
-	int count = 0;
+	int count = -1;
 	for (Node n = head; n != null; n = n.getNext()){
 	    if (count == i){
 		return n.getData();
@@ -36,7 +47,7 @@ public class MyLinkedList{
 	throw new IndexOutOfBoundsException();
     }
     public String set(int i, String s){
-	int count = 0;
+	int count = -1;
 	Node tmp = new Node();
 	Node nn = new Node(s);
 	for (Node n = head; n!= null; n=n.getNext()){
@@ -51,7 +62,7 @@ public class MyLinkedList{
     public String remove(int i){
 	Node tmp1= new Node();
 	Node tmp2 = new Node();
-	int count = 0;
+	int count = -1;
 	for(Node j = head ;j!= null; j = j.getNext()){
 	    if (count == i-1){
 		tmp1 = j;
@@ -64,7 +75,7 @@ public class MyLinkedList{
     }
 
     public int find(String s){
-	int ind = 0;
+	int ind = -1;
 	for(Node n= head; n!= null; n=n.getNext()){
 	    if(n.getData().equals(s)){
 		return ind;
@@ -75,14 +86,15 @@ public class MyLinkedList{
     }
     public int length(){
 	int len = 0;
-	for (Node n = head; n!= null; n=n.getNext()){
+	for (Node n = head.getNext(); n!= null; n=n.getNext()){
 	    len = len + 1;
+	    Len = len;
 	}
 	return len;
     }
     public String toString(){
 	String s = "";
-	for (Node n = head; n!= null; n = n.getNext()){
+	for (Node n = tail.getBefore(); n!= null; n = n.getBefore()){
 	    s = s  + n + "  ";
 	}
 	return s;

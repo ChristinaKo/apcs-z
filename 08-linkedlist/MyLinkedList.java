@@ -16,7 +16,7 @@ public class MyLinkedList{
      	int count = 0;
 	Node tmp = new Node(s);
     	for (Node n = head; n != null; n = n.getNext()){
-	    if (count ==i){
+	    if (count ==i-1){
 		tmp.setNext(n.getNext());
 		n.setNext(tmp);
 		
