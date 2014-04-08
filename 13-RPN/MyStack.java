@@ -1,3 +1,7 @@
+import java.util.*;
+import java.io.*;
+
+
 public class MyStack {
 
     private Node top;
@@ -61,13 +65,25 @@ public class MyStack {
 	    numElts = numElts -1;
 	    
 	}
+	else if (o.equals("sin")){
+	    double ans = Math.sin(Double.parseDouble(this.pop()));
+	    this.push(""+ans);
+	}
+	else if (o.equals("cos")){
+	    double ans = Math.cos(Double.parseDouble(this.pop()));
+	    this.push(""+ans);
+	}
+	else if (o.equals("tan")){
+	    double ans = Math.tan(Double.parseDouble(this.pop()));
+	    this.push(""+ans);
+	}
 	else{
 	    this.push(o);
 	    numElts = numElts +1;
 	}
 	
     }
-    
+
     public String toString() {
 	String s="";
 	

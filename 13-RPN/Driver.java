@@ -15,5 +15,9 @@ public class Driver{
 	System.out.println(m);
 	m.calc("-");
 	System.out.println(m);
+	m.calc("1234");
+	m.calc("3.14");
+	m.calc("sin");
+	System.out.println(m);
     }
 }
