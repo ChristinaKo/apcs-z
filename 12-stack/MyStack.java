@@ -8,7 +8,7 @@ public class MyStack {
     private int numElts;
     private String[]stack;
     public MyStack(){
-	top = 0;
+	top = -1;
 	numElts = 0;
 	stack = new String[10];
     }
@@ -22,8 +22,8 @@ public class MyStack {
 	if(numElts>=stack.length){
 	    this.grow();
 	}
-       	stack[top] = s;
 	top = top + 1;
+       	stack[top] = s;
 	numElts = numElts  +1;
     }
 
