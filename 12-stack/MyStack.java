@@ -1,41 +1,40 @@
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
 public class MyStack {
 
-    private Node top;
+    private int top;
     private int numElts;
-    private int ind;
-
+    private String[]stack;
     public MyStack(){
-	top = null;
+	top = 0;
 	numElts = 0;
-	String []stack = new String[10];
-	ind = 0;
-	stack[ind] = top.getData();
+	stack = new String[10];
     }
 
+    public void grow(){
+	String[] tmp = new String[stack.length * 2];
+	System.arraycopy(stack,0,tmp,0,stack.length);
+	stack = tmp;
+    }
     public void push(String s){ 
-	Node n = new Node(s);
-	/*n.setNext(top);
-	top = n;
-	numElts = numElts+1;
-	*/
-	if (ind == stack.length()){
-	    String[]tmp = new String[stack.length+1];
-	    System.arrayCopy(stack,0,tmp, 0, stack.length);
-	    stack = tmp;
+	if(numElts>=stack.length){
+	    this.grow();
 	}
-	stack[ind] = s;
-	ind = ind  +1;
+       	stack[top] = s;
+	top = top + 1;
+	numElts = numElts  +1;
     }
 
     public String pop() {
-	String ret = top.getData();
-	top = top.getNext();
-	numElts = numElts-1;
-	return ret;
+	top = top -1;
+	numElts = numElts -1;
+	return stack[top +1];
     }
 
     public String peek() {
-	return top.getData();
+	return stack[top];
 
     }
     
@@ -44,14 +43,14 @@ public class MyStack {
     }
 
     public boolean isEmpty() {
-	return top==null;
+	return this.size() == 0;
     }
 
     public String toString() {
 	String s="";
 	
-	for (Node tmp = top; tmp != null; tmp = tmp.getNext()){
-	    s = s + tmp.getData()+", ";
+	for (int i = 0; i < this.size(); i ++){
+	    s = s + stack[i]+", ";
 	}
 	/*
 	  Node tmp = top;
