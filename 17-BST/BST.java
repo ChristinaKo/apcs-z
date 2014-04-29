@@ -1,0 +1,85 @@
+public class BST {
+    private Node root;
+
+    public BST() {
+        root = null;
+    }
+    public void insert(int n){
+	Node c = root;
+	while (c!=null){
+	    if(c.getData()<n){
+		c=c.getRight();
+	    }
+	    else{
+		c = c.getLeft();
+	    }
+	}
+	Node newn = new Node(n);
+	c.setLeft(newn);
+
+    }
+    public Node  search (int n){
+	Node c = root;
+	while(c!= null && c.getData()!=n){
+	    if(c.getData()<n){
+		c=c.getRight();
+	    }
+	    else{
+		c = c.getLeft();
+	    }
+	}
+	return c;
+    }
+    public Node search2(Node c, int x){
+	if(c.getData()== x){
+	    return c;
+	}
+	else{
+	    if(c.getData()<x){
+		search2(c.getRight(), x);
+	    }
+	    else{
+		search2(c.getLeft(), x);
+	    }
+	}
+	return c;
+    }
+    public void delete(int x){
+	Node c = root;
+	Node n = root;
+	while(c!=null){
+	    if(c.getData() > x){
+		n=c;
+		c = c.getLeft();
+	    }
+	    else{
+		n=c;
+		c = c.getRight();
+	    }
+	    if(c.getData() ==x){
+		if(c.getRight()==null && c.getLeft()==null){
+		    n.setRight(null);
+		    n.setRight(null);
+		}
+		else if(c.getRight()!= null || c.getLeft()==null){
+		    n.setRight(c.getRight());
+		}
+		else if(c.getLeft()!=null || c.getRight()==null){
+		    n.setLeft(c.getLeft());
+		}
+		else if(c.getLeft()!=null || c.getRight() != null){
+		    Node last = c;
+		    c =c.getRight(); 
+		    while(c != null){
+			last = c;
+			c=c.getLeft();
+		    }
+		    last.setLeft(null);
+		    n=c;
+		}
+	    }
+	}
+    }
+
+}
+
