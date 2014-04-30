@@ -6,16 +6,19 @@ public class BST {
     }
     public void insert(int n){
 	Node c = root;
+	Node l = root;
 	while (c!=null){
 	    if(c.getData()<n){
+		l = c;
 		c=c.getRight();
 	    }
 	    else{
+		l = c
 		c = c.getLeft();
 	    }
 	}
 	Node newn = new Node(n);
-	c.setLeft(newn);
+	l.setLeft(newn);
 
     }
     public Node  search (int n){
@@ -31,15 +34,15 @@ public class BST {
 	return c;
     }
     public Node search2(Node c, int x){
-	if(c.getData()== c){
+	if(c.getData()== x || c ==null){
 	    return c;
 	}
 	else{
-	    if(c.getData()<n){
-		search(c.getRight(), n);
+	    if(c.getData()<x){
+		search(c.getRight(), x);
 	    }
 	    else{
-		search(c.getLeft(), n);
+		search(c.getLeft(), x);
 	    }
 	}
 	    return c;

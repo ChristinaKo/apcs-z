@@ -4,18 +4,21 @@ public class BST {
     public BST() {
         root = null;
     }
-    public void insert(int n){
+ public void insert(int n){
 	Node c = root;
+	Node l = root;
 	while (c!=null){
 	    if(c.getData()<n){
+		l = c;
 		c=c.getRight();
 	    }
 	    else{
+		l = c
 		c = c.getLeft();
 	    }
 	}
 	Node newn = new Node(n);
-	c.setLeft(newn);
+	l.setLeft(newn);
 
     }
     public Node  search (int n){
