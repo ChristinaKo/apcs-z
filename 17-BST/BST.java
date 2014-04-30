@@ -64,13 +64,13 @@ public class BST {
 		    n.setRight(null);
 		    n.setRight(null);
 		}
-		else if(c.getRight()!= null || c.getLeft()==null){
+		else if(c.getRight()!= null && c.getLeft()==null){
 		    n.setRight(c.getRight());
 		}
-		else if(c.getLeft()!=null || c.getRight()==null){
+		else if(c.getLeft()!=null && c.getRight()==null){
 		    n.setLeft(c.getLeft());
 		}
-		else if(c.getLeft()!=null || c.getRight() != null){
+		else if(c.getLeft()!=null && c.getRight() != null){
 		    Node last = c;
 		    c =c.getRight(); 
 		    while(c != null){
