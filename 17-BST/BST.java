@@ -4,22 +4,39 @@ public class BST {
     public BST() {
         root = null;
     }
- public void insert(int n){
+    public Node getRoot(){
+	return root;
+    }
+    public void insert(int n){
 	Node c = root;
 	Node l = root;
-	while (c!=null){
+	if (c==null){
+	    Node tmp = new Node(n)
+	    c= tmp;
+
+	}	while (c!=null){
 	    if(c.getData()<n){
 		l = c;
 		c=c.getRight();
 	    }
 	    else{
-		l = c
+		l = c;
 		c = c.getLeft();
 	    }
 	}
 	Node newn = new Node(n);
 	l.setLeft(newn);
 
+    }
+    public void transverse(Node n){
+	if(n == null){
+	    System.out.println("");
+	}
+	else{
+	    System.out.println(n.getData());
+	    transverse(n.getLeft());
+	    transverse(n.getRight());
+	}
     }
     public Node  search (int n){
 	Node c = root;
